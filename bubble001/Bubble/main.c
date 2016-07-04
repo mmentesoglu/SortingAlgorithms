@@ -3,16 +3,17 @@
     This application created for demonstrate of bubble sort
     Author : MMENTESOGLU
     Time   : 2016-07-04
-    Version: 0.0.1
+    Version: 0.0.2
+    - Added Compare function
 */
 #include <stdio.h>
 #include <stdlib.h>
-#define N_Array 65536
-#define DEBUG 0
+#define N_Array 255
+#define DEBUG 1
 
 void printArray(int *array,int len);
 void bubbleSort(int a[],int N);
-
+int compare(int a,int b);
 
 int arr[10] = {3,6,1,2,3,8,4,1,7,2};
 int dizi[N_Array];
@@ -35,13 +36,17 @@ void bubbleSort(int a[],int N){
     int i,j,t;
     for(i = N-1;i>=0;i--){
         for(j=1;j<=i;j++){
-            if(a[j-1]>a[j]){
+            if(compare(a[j-1],a[j])){
                 t = a[j-1];
                 a[j-1] = a[j];
                 a[j] = t;
             }
         }
     }
+}
+
+int compare(int a,int b){
+    return (a>b);
 }
 
 void printArray(int *array,int len){
